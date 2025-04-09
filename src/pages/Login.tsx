@@ -66,6 +66,11 @@ const Login: React.FC = () => {
               onClick={() => loginWithProvider(new GoogleAuthProvider())}
               type="button"
             >
+              <img
+                src="/icons/google-icon.svg"
+                alt="Google"
+                className="provider-icon"
+              />
               Iniciar con Google
             </button>
             <button
@@ -73,6 +78,11 @@ const Login: React.FC = () => {
               onClick={() => loginWithProvider(new FacebookAuthProvider())}
               type="button"
             >
+              <img
+                src="/icons/facebook-icon.svg"
+                alt="Facebook"
+                className="provider-icon"
+              />
               Iniciar con Facebook
             </button>
             <button
@@ -80,6 +90,11 @@ const Login: React.FC = () => {
               onClick={() => loginWithProvider(new OAuthProvider("apple.com"))}
               type="button"
             >
+              <img
+                src="/icons/apple-icon.svg"
+                alt="Apple"
+                className="provider-icon"
+              />
               Iniciar con Apple
             </button>
           </div>

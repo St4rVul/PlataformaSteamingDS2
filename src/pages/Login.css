@@ -192,3 +192,21 @@
 .login-signup a:hover {
   text-decoration: underline;
 }
+
+.provider-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+.provider-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Opcional: ajustar colores de iconos según necesidad */
+.apple-button .provider-icon {
+  filter: invert(1);
+}
