@@ -1,54 +1,93 @@
-# React + TypeScript + Vite
+# Plataforma de Streaming
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una plataforma de streaming moderna construida con React.js, TypeScript, NestJS y PostgreSQL.
 
-Currently, two official plugins are available:
+##  Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Autenticación con Firebase (email, Google, Facebook, Apple)
+- Reproducción de video adaptativa (HLS/MPEG-DASH)
+- Sistema de suscripciones con Stripe
+- Almacenamiento de archivos en FireBase
+- Panel de administración
+- Soporte para subtítulos y audio multilingüe
+- Sistema de recomendaciones
 
-## Expanding the ESLint configuration
+## 🛠 Tecnologías
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React.js
+- TypeScript
+- Video.js
+- TailwindCSS
+- Firebase Auth
+- Stripe Elements
+
+### Backend
+
+- NestJS
+- PostgreSQL
+- TypeORM
+- AWS SDK
+- Stripe API
+- Firebase Admin SDK
+
+## 📦 Instalación
+
+### Requisitos previos
+
+- Node.js (v16 o superior)
+- PostgreSQL
+- Cuenta de FireBase
+- Cuenta de Stripe
+- Proyecto de Firebase
+
+### Configuración del entorno
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/tu-usuario/streaming-platform.git
+cd streaming-platform
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Instalar dependencias del frontend:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. Instalar dependencias del backend:
+
+```bash
+cd backend
+npm install
+```
+
+4. Configurar variables de entorno:
+
+Frontend (.env)
+
+Backend (.env)
+
+
+
+
+## 🔒 Seguridad
+
+- Autenticación JWT
+- Encriptación de contraseñas con bcrypt
+- Protección contra CSRF
+- Validación de datos
+- Sanitización de entradas
+- Cumplimiento GDPR
+
+##  Escalabilidad
+
+- Arquitectura en microservicios
+- Caché distribuido
+- Balanceo de carga
+- CDN para contenido estático
+- Base de datos replicada
+
+
