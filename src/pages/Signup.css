@@ -101,3 +101,14 @@ html {
   color: #fff;
   text-decoration: underline;
 }
+
+.signup-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #fff;
+  text-decoration: underline;
+}
