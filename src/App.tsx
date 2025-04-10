@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ProfileSelection from "./components/ProfileSelection";
+import Home from "./components/Home";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -32,6 +34,9 @@ const App: React.FC = () => {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/profiles" element={<ProfileSelection />} />
+        <Route path="/home" element={<Home />} />
+
         <Route
           path="/admin"
           element={

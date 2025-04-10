@@ -8,21 +8,40 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 import "./Login.css";
+import { useNavigate } from "react-router-dom"; // Importación faltante
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // Inicialización faltante
 
-  const loginWithProvider = (provider: any) => {
-    signInWithPopup(auth, provider).catch((err) => setError(err.message));
+  const loginWithProvider = async (provider: any) => {
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/profiles"); // Redirige a selección de perfiles
+    } catch (err: unknown) {
+      // Mejor manejo de tipos TypeScript
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Ocurrió un error desconocido");
+      }
+    }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password).catch((err) =>
-      setError(err.message)
-    );
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/profiles"); // Redirige a selección de perfiles
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Ocurrió un error desconocido");
+      }
+    }
   };
 
   return (
