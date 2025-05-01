@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import "./SignUp.css";
+import "./Signup.css";
 
 const SignUp: React.FC = () => {
   const [username, setUsername] = useState("");
