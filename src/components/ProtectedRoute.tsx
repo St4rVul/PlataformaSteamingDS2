@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { JSX } from "react/jsx-runtime";
 
 interface ProtectedRouteProps {
   user: any;
