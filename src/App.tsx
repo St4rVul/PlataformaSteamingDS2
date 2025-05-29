@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
@@ -13,6 +14,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProfileSelection from "./components/ProfileSelection";
 import Home from "./components/Home";
+import StripeCheckout from "./components/StripeCheckout";
+
+
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -36,6 +40,8 @@ const App: React.FC = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profiles" element={<ProfileSelection />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<><Home /><StripeCheckout /></>} />
+
 
         <Route
           path="/admin"
