@@ -22,7 +22,7 @@ export default function CheckoutForm() {
       const response = await fetch('http://localhost:4000/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: 1000 }), // Monto en centavos (ej: $10.00 USD)
+        body: JSON.stringify({ amount: 1000 }), // o el monto que desees
       });
 
       if (!response.ok) {

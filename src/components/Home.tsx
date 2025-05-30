@@ -57,7 +57,10 @@ const Home: React.FC = () => {
 						</button>
 					</div>
 				</div>
-				<button className="text-lg hover:text-gray-300 transition-colors duration-200">
+				<button
+					className="text-lg hover:text-gray-300 transition-colors duration-200"
+					onClick={() => navigate("/account")}
+				>
 					Mi cuenta
 				</button>
 			</nav>

@@ -15,7 +15,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ProfileSelection from "./components/ProfileSelection";
 import Home from "./components/Home";
 import StripeCheckout from "./components/StripeCheckout";
-
+import Account from "./pages/Account";
 
 
 const App: React.FC = () => {
@@ -41,7 +41,7 @@ const App: React.FC = () => {
         <Route path="/profiles" element={<ProfileSelection />} />
         <Route path="/home" element={<Home />} />
         <Route path="/home" element={<><Home /><StripeCheckout /></>} />
-
+        <Route path="/account" element={<Account />} />
 
         <Route
           path="/admin"
