@@ -65,6 +65,24 @@ const Home: React.FC = () => {
 				</button>
 			</nav>
 
+			{/* Espacio para la preview del video */}
+			<div
+				style={{
+					width: "100%",
+					height: "320px",
+					background: "#23232b",
+					borderRadius: "18px",
+					margin: "32px 0",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+				}}
+			>
+				<span className="text-gray-400 text-xl">
+					Aquí irá la preview del video
+				</span>
+			</div>
+
 			{/* Destacados */}
 			<div className="py-10">
 				<h2 className="text-4xl font-bold mb-8">Destacados</h2>

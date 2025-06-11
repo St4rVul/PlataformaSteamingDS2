@@ -1,7 +1,6 @@
 import React from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "../components/CheckoutForm";
 import SubscriptionSection from "../components/SubscriptionSection";
 
 // Reemplaza con tu clave pública de Stripe
@@ -10,12 +9,9 @@ const stripePromise = loadStripe("pk_test_51RRdh2IMveI3OI3GeLoNiOFiOwIZ99lvnEakE
 const Account: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#18181c] text-white px-4">
-      <h1 className="text-3xl font-bold mb-8">Mi Cuenta</h1>
-      <div className="w-full max-w-md bg-[#23232b] rounded-xl shadow-lg p-8">
-        <Elements stripe={stripePromise}>
-          <SubscriptionSection />
-        </Elements>
-      </div>
+      <Elements stripe={stripePromise}>
+        <SubscriptionSection />
+      </Elements>
     </div>
   );
 };

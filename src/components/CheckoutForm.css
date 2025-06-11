@@ -1,13 +1,16 @@
 .checkout-form-container {
-  max-width: 400px;
+  max-width: 420px; /* Más ancho que los planes */
+  width: 100%;
   margin: 40px auto;
-  padding: 32px 24px;
-  background: #23232a; /* Fondo oscuro acorde al fondo general */
+  padding: 40px 32px; /* Más padding */
+  background: #23232a;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .checkout-form-title {
@@ -25,12 +28,13 @@
 }
 
 .StripeElement {
-  padding: 12px;
+  padding: 18px 16px; /* Más alto y ancho */
   border: 1px solid #444654;
   border-radius: 8px;
   background: #18181c;
   color: #fff;
   margin-bottom: 16px;
+  font-size: 18px; /* Más grande */
   transition: border-color 0.2s;
 }
 
@@ -69,12 +73,15 @@
 }
 
 .subscription-section {
-  max-width: 600px;
+  max-width: 900px; /* Igual que el contenedor de los planes */
   margin: 40px auto;
   padding: 24px;
   background: #1a1a1f;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .plans-container {
@@ -83,7 +90,11 @@
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   padding: 32px 24px;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 900px; /* Igual que .subscription-section */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .subscription-title {
