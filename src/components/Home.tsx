@@ -24,10 +24,10 @@ const Home: React.FC = () => {
 	const [navHover, setNavHover] = useState(false);
 
 	return (
-		<div className="min-h-screen bg-[#18181c] text-white px-8 md:px-16">
-			{/* Navbar */}
+		<div className="min-h-screen bg-[#18181c] text-white">
+			{/* Header */}
 			<nav
-				className="py-6 flex items-center justify-between bg-[#18181c] shadow-2xl border-b border-[#23232b] z-10 relative"
+				className="main-header py-6 flex items-center justify-between fixed top-0 left-0 w-full transition-colors duration-300 z-10 bg-[rgba(24,24,28,0.7)]"
 				onMouseEnter={() => setNavHover(true)}
 				onMouseLeave={() => setNavHover(false)}
 			>
@@ -64,44 +64,61 @@ const Home: React.FC = () => {
 					Mi cuenta
 				</button>
 			</nav>
-
-			{/* Espacio para la preview del video */}
+			{/* Contenido principal */}
 			<div
+				className="main-bordered"
 				style={{
-					width: "100%",
-					height: "320px",
-					background: "#23232b",
-					borderRadius: "18px",
-					margin: "32px 0",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
+					paddingTop: 96,
+					position: "relative",
+					zIndex: 2,
 				}}
 			>
-				<span className="text-gray-400 text-xl">
-					Aquí irá la preview del video
-				</span>
-			</div>
-
-			{/* Destacados */}
-			<div className="py-10">
-				<h2 className="text-4xl font-bold mb-8">Destacados</h2>
-				<div className="flex gap-8">
-					{destacados.map((item, idx) => (
-						<div
-							key={idx}
-							className="bg-[#23232b] rounded-xl overflow-hidden shadow-lg w-80 flex-shrink-0"
-						>
-							<img
-								src={item.image}
-								alt={item.title}
-								className="w-full h-40 object-cover"
-							/>
-							<div className="p-6">
-								<h3 className="text-2xl font-semibold">{item.title}</h3>
+				{/* Video ahora está dentro del recuadro */}
+				<div
+					className="video-preview-wrapper"
+					style={{ width: "100%", height: 320, margin: 0 }}
+				>
+					<div
+						className="video-preview-fade"
+						style={{
+							height: 320,
+							borderRadius: "0 0 18px 18px",
+						}}
+					>
+						<video
+							src="/videos/prueba.mp4"
+							autoPlay
+							muted
+							loop
+							style={{
+								width: "100%",
+								height: "320px",
+								objectFit: "cover",
+								borderRadius: "0 0 18px 18px",
+							}}
+						/>
+					</div>
+				</div>
+				{/* Resto del contenido */}
+				<div className="py-10">
+					<h2 className="text-4xl font-bold mb-8">Destacados</h2>
+					<div className="flex gap-8">
+						{destacados.map((item, idx) => (
+							<div
+								key={idx}
+								className="bg-[#23232b] rounded-xl overflow-hidden shadow-lg w-80 flex-shrink-0"
+							>
+								<img
+									src={item.image}
+									alt={item.title}
+									className="w-full h-40 object-cover"
+								/>
+								<div className="p-6">
+									<h3 className="text-2xl font-semibold">{item.title}</h3>
+								</div>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

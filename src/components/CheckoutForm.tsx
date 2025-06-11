@@ -64,7 +64,7 @@ export default function CheckoutForm({ amount, planName, onBack }: CheckoutFormP
     <div className="checkout-form-container">
       <div className="checkout-form-title">Pago con tarjeta</div>
       <div className="checkout-form-label">
-        Suscripción: <b>{planName}</b> - <span>${(amount / 100).toFixed(2)} MXN</span>
+        Suscripción: <b>{planName}</b> - <span>${amount.toLocaleString('es-CO')} COP</span>
       </div>
       <form onSubmit={handleSubmit}>
         <label className="checkout-form-label">Datos de la tarjeta</label>
