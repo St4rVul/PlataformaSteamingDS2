@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProfileSelection from "./components/ProfileSelection";
+import Upload from "./components/upload";
 import Home from "./components/Home";
 
 const App: React.FC = () => {
@@ -36,7 +37,7 @@ const App: React.FC = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profiles" element={<ProfileSelection />} />
         <Route path="/home" element={<Home />} />
-
+        <Route path="/upload" element={<Upload />} />
         <Route
           path="/admin"
           element={
