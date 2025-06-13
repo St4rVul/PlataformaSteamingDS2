@@ -126,14 +126,14 @@ const Account: React.FC = () => {
             Suscribirse
           </button>
         )}
-        <PlansModal open={plansOpen} onClose={() => setPlansOpen(false)} wide={showingCheckoutForm}>
-          <Elements stripe={stripePromise}>
-            <SubscriptionSection onShowCheckoutForm={setShowingCheckoutForm} />
-          </Elements>
-        </PlansModal>
       </div>
+      {/* Modal debe ir aquí, fuera del contenedor absoluto */}
+      <PlansModal open={plansOpen} onClose={() => setPlansOpen(false)} wide={showingCheckoutForm}>
+        <Elements stripe={stripePromise}>
+          <SubscriptionSection onShowCheckoutForm={setShowingCheckoutForm} />
+        </Elements>
+      </PlansModal>
       {/* Resto del contenido centrado */}
-      
     </div>
   );
 };
