@@ -1,14 +1,21 @@
 .checkout-form-container {
-  max-width: 540px !important;
+  max-width: 800px !important;
   width: 100%;
   margin: 48px auto;
-  padding: 48px 48px 36px 48px !important;
+  padding: 48px 64px 36px 64px !important;
   background: #23232a;
   border-radius: 18px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.22);
   display: block; /* Cambia de flex a block para evitar herencia de flex del padre */
   box-sizing: border-box;
   position: relative; /* Asegura que el z-index funcione si lo necesitas */
+}
+
+.checkout-form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .checkout-form-title {
@@ -22,19 +29,33 @@
 .checkout-form-label {
   color: #e2e8f0;
   font-size: 1.1rem;
+  width: 100%;
+  text-align: left;
   margin-bottom: 10px;
-  text-align: center;
+}
+
+.checkout-form-container .StripeElement,
+.checkout-form-container .__PrivateStripeElement,
+.checkout-form-container .StripeElement--empty {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  display: block;
 }
 
 .StripeElement {
-  padding: 18px 16px;
-  border: 1px solid #444654;
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  padding: 14px 20px;
+  border: 1px solid #3182ce;
   border-radius: 8px;
   background: #18181c;
   color: #fff;
   margin-bottom: 16px;
   font-size: 18px;
   transition: border-color 0.2s;
+  display: block;
 }
 
 .StripeElement--focus {
@@ -53,6 +74,7 @@
   color: #fff;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
+  box-sizing: border-box;
 }
 
 .checkout-form-button:disabled,
@@ -74,7 +96,7 @@
 }
 
 .subscription-section {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 40px auto;
   padding: 24px;
   background: #1a1a1f;

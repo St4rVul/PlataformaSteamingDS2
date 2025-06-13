@@ -1,17 +1,24 @@
-import { useState } from 'react';
-import CheckoutForm from './CheckoutForm';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import CheckoutForm from "./CheckoutForm";
 
 const plans = [
-  { name: 'Básico', price: 12500, description: 'Calidad SD, 1 pantalla' },
-  { name: 'Estándar', price: 18000, description: 'Calidad HD, 2 pantallas' },
-  { name: 'Premium', price: 23000, description: 'Calidad 4K, 4 pantallas' },
+  { name: "Básico", price: 12500, description: "Calidad SD, 1 pantalla" },
+  { name: "Estándar", price: 18000, description: "Calidad HD, 2 pantallas" },
+  { name: "Premium", price: 23000, description: "Calidad 4K, 4 pantallas" },
 ];
 
-export default function SubscriptionSection() {
-  const [selectedPlan, setSelectedPlan] = useState<null | typeof plans[0]>(null);
+export default function SubscriptionSection({ onShowCheckoutForm }) {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (onShowCheckoutForm) onShowCheckoutForm(!!selectedPlan);
+  }, [selectedPlan]);
 
   return (
     <div className="subscription-section">
+      {/* Botón Volver al Home */}
       {!selectedPlan ? (
         <div className="plans-container">
           <h2 className="subscription-title">Elige tu plan de suscripción</h2>
@@ -23,15 +30,22 @@ export default function SubscriptionSection() {
                 <div className="plan-price">
                   ${plan.price.toLocaleString("es-CO")} COP
                 </div>
-                <button onClick={() => setSelectedPlan(plan)} className="subscribe-btn">
-                  Suscribirse
+                <button
+                  onClick={() => setSelectedPlan(plan)}
+                  className="subscribe-btn"
+                >
+                  Seleccionar
                 </button>
               </div>
             ))}
           </div>
         </div>
       ) : (
-        <CheckoutForm amount={selectedPlan.price} planName={selectedPlan.name} onBack={() => setSelectedPlan(null)} />
+        <CheckoutForm
+          amount={selectedPlan.price}
+          planName={selectedPlan.name}
+          onBack={() => setSelectedPlan(null)}
+        />
       )}
     </div>
   );
