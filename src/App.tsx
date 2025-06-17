@@ -16,7 +16,7 @@ import ProfileSelection from "./components/ProfileSelection";
 import Home from "./components/Home";
 import StripeCheckout from "./components/StripeCheckout";
 import Account from "./pages/Account";
-
+import Reproductor from "./pages/Reproductor";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -40,7 +40,16 @@ const App: React.FC = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profiles" element={<ProfileSelection />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/home" element={<><Home /><StripeCheckout /></>} />
+        <Route path="/reproductor" element={<Reproductor />} />
+        <Route
+          path="/home"
+          element={
+            <>
+              <Home />
+              <StripeCheckout />
+            </>
+          }
+        />
         <Route path="/account" element={<Account />} />
 
         <Route
