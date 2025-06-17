@@ -1,28 +1,62 @@
-name: NodeJS with Grunt
+name: Add Issues and PRs to GitHub Project
 
 on:
-  push:
-    branches: [ "main" ]
+  issues:
+    types: [opened]
   pull_request:
-    branches: [ "main" ]
+    types: [opened]
 
 jobs:
-  build:
+  add_to_project:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-
     steps:
-    - uses: actions/checkout@v4
+      - name: Add to GitHub Project
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const projectNumber = 3; // Tu número de Project
+            const user = "St4rVul";
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
+            const { data: projects } = await github.graphql(`
+              query($user: String!) {
+                user(login: $user) {
+                  projectsV2(first: 100) {
+                    nodes {
+                      id
+                      title
+                      number
+                    }
+                  }
+                }
+              }
+            `, { user });
 
-    - name: Build
-      run: |
-        npm install
-        grunt
+            const project = projects.user.projectsV2.nodes.find(p => p.number === projectNumber);
+            if (!project) {
+              throw new Error("No se encontró el proyecto número " + projectNumber);
+            }
+
+            const contentId = context.payload.issue?.node_id || context.payload.pull_request?.node_id;
+
+            if (!contentId) {
+              throw new Error("No se encontró el node_id del issue o pull request.");
+            }
+
+            await github.graphql(`
+              mutation($projectId: ID!, $contentId: ID!) {
+                addProjectV2ItemById(input: {
+                  projectId: $projectId,
+                  contentId: $contentId
+                }) {
+                  item {
+                    id
+                  }
+                }
+              }
+            `, {
+              projectId: project.id,
+              contentId
+            });
+
+            console.log("✅ Item agregado correctamente al Project");
