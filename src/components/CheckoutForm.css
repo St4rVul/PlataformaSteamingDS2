@@ -1,0 +1,205 @@
+.checkout-form-container {
+  max-width: 800px !important;
+  width: 100%;
+  margin: 48px auto;
+  padding: 48px 64px 36px 64px !important;
+  background: #23232a;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+  display: block; /* Cambia de flex a block para evitar herencia de flex del padre */
+  box-sizing: border-box;
+  position: relative; /* Asegura que el z-index funcione si lo necesitas */
+}
+
+.checkout-form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.checkout-form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.checkout-form-label {
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.checkout-form-container .StripeElement,
+.checkout-form-container .__PrivateStripeElement,
+.checkout-form-container .StripeElement--empty {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  display: block;
+}
+
+.StripeElement {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  padding: 14px 20px;
+  border: 1px solid #3182ce;
+  border-radius: 8px;
+  background: #18181c;
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 18px;
+  transition: border-color 0.2s;
+  display: block;
+}
+
+.StripeElement--focus {
+  border-color: #3182ce;
+}
+
+.checkout-form-button {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  margin-top: 18px;
+  background: #3182ce;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  box-sizing: border-box;
+}
+
+.checkout-form-button:disabled,
+.checkout-form-button.processing {
+  background: #90cdf4;
+  cursor: not-allowed;
+}
+
+.checkout-form-button + .checkout-form-button {
+  background: #444654;
+  margin-top: 10px;
+}
+
+.error {
+  color: #ff6b6b;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.subscription-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #1a1a1f;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plans-container {
+  background: #23232a;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 32px 24px;
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscription-title {
+  color: #fff;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .plans-list {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+  }
+}
+
+.plan-card {
+  background: #23232b;
+  border-radius: 14px;
+  padding: 28px 22px 24px 22px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  color: #fff;
+  min-width: 220px;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: 2px solid transparent;
+}
+
+.plan-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(49,130,206,0.18);
+  border-color: #3182ce;
+}
+
+.plan-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #90cdf4;
+}
+
+.plan-card p {
+  font-size: 1rem;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.plan-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.subscribe-btn {
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.subscribe-btn:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
