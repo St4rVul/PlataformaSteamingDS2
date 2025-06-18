@@ -1,29 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import CheckoutForm from "./CheckoutForm";
 
-const plans = [
-  { name: "Básico", price: 12500, description: "Calidad SD, 1 pantalla" },
-  { name: "Estándar", price: 18000, description: "Calidad HD, 2 pantallas" },
-  { name: "Premium", price: 23000, description: "Calidad 4K, 4 pantallas" },
-];
+// Definir tipo para el plan
+type Plan = {
+  name: string;
+  price: number;
+  description: string;
+};
 
-export default function SubscriptionSection({ onShowCheckoutForm }) {
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const navigate = useNavigate();
+// Definir props del componente
+interface SubscriptionSectionProps {
+  onShowCheckoutForm: (isShowing: boolean) => void;
+}
+
+export default function SubscriptionSection({
+  onShowCheckoutForm,
+}: SubscriptionSectionProps) {
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+
+  const plans: Plan[] = [
+    { name: "Básico", price: 12500, description: "Calidad SD, 1 pantalla" },
+    { name: "Estándar", price: 18000, description: "Calidad HD, 2 pantallas" },
+    { name: "Premium", price: 23000, description: "Calidad 4K, 4 pantallas" },
+  ];
 
   useEffect(() => {
-    if (onShowCheckoutForm) onShowCheckoutForm(!!selectedPlan);
-  }, [selectedPlan]);
+    onShowCheckoutForm(!!selectedPlan);
+  }, [selectedPlan, onShowCheckoutForm]);
 
   return (
     <div className="subscription-section">
-      {/* Botón Volver al Home */}
       {!selectedPlan ? (
         <div className="plans-container">
           <h2 className="subscription-title">Elige tu plan de suscripción</h2>
           <div className="plans-list">
-            {plans.map(plan => (
+            {plans.map((plan) => (
               <div key={plan.name} className="plan-card">
                 <h3>{plan.name}</h3>
                 <p>{plan.description}</p>

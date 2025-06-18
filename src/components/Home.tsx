@@ -6,9 +6,9 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [navHover, setNavHover] = useState(false);
 
-  const sliderRef1 = useRef<HTMLDivElement>(null);
-  const sliderRef2 = useRef<HTMLDivElement>(null);
-  const sliderRef3 = useRef<HTMLDivElement>(null);
+  const sliderRef1 = useRef<HTMLDivElement>(null!);
+  const sliderRef2 = useRef<HTMLDivElement>(null!);
+  const sliderRef3 = useRef<HTMLDivElement>(null!);
 
   const scrollSlider = (
     direction: "left" | "right",
