@@ -12,7 +12,6 @@ const stripePromise = loadStripe(
 );
 
 const Account: React.FC = () => {
-  const [showPlans, setShowPlans] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(defaultProfilePhoto);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [hover, setHover] = useState(false);
@@ -29,131 +28,119 @@ const Account: React.FC = () => {
     }
   };
 
-  const profileName = "Emilson"; // Cambia por el nombre real del perfil
-  const currentPlan = null; // O el nombre del plan actual, por ejemplo: "Estándar"
+  const profileName = "Emilson";
   const navigate = useNavigate();
+
   return (
-    <>
+    <div
+      className="min-h-screen bg-[#18181c] text-white px-4"
+      style={{ position: "relative" }}
+    >
+      {/* Avatar y datos de perfil */}
       <div
-        className="min-h-screen bg-[#18181c] text-white px-4"
-        style={{ position: "relative" }}
+        style={{
+          position: "absolute",
+          top: 70,
+          left: 50,
+          zIndex: 10,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: 220,
+        }}
       >
-        {/* Avatar y datos de perfil */}
         <div
           style={{
-            position: "absolute",
-            top: 70,
-            left: 50,
-            zIndex: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
             width: 220,
+            height: 220,
+            borderRadius: 32,
+            overflow: "hidden",
+            background: "#23232a",
+            boxShadow: "0 4px 24px rgba(49,130,206,0.10)",
+            position: "relative",
+            cursor: "pointer",
           }}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onClick={() => fileInputRef.current?.click()}
         >
-          {/* Solo el contenedor de la imagen tiene el hover */}
-          <div
+          <img
+            src={profilePhoto}
+            alt="Foto de perfil"
             style={{
-              width: 220,
-              height: 220,
-              borderRadius: 32,
-              overflow: "hidden",
-              background: "#23232a",
-              boxShadow: "0 4px 24px rgba(49,130,206,0.10)",
-              position: "relative",
-              cursor: "pointer",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+              transition: "filter 0.2s",
             }}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <img
-              src={profilePhoto}
-              alt="Foto de perfil"
+          />
+          {hover && (
+            <div
               style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
-                display: "block",
-                transition: "filter 0.2s",
+                background: "rgba(30,41,59,0.65)",
+                color: "#fff",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: 600,
+                fontSize: 22,
+                letterSpacing: 1,
+                borderRadius: 32,
+                pointerEvents: "none",
+                userSelect: "none",
               }}
-            />
-            {hover && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  background: "rgba(30,41,59,0.65)",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 600,
-                  fontSize: 22,
-                  letterSpacing: 1,
-                  borderRadius: 32,
-                  pointerEvents: "none",
-                  userSelect: "none",
-                }}
-              >
-                Cambiar foto
-              </div>
-            )}
-            <input
-              type="file"
-              accept="image/*"
-              ref={fileInputRef}
-              style={{ display: "none" }}
-              onChange={handlePhotoChange}
-            />
-          </div>
-          {/* Nombre y botón debajo, fuera del hover */}
-          <div
-            style={{
-              marginTop: 18,
-              fontWeight: 700,
-              fontSize: 22,
-              color: "#fff",
-              textAlign: "center",
-              width: "100%",
-              wordBreak: "break-word",
-            }}
-          >
-            {profileName}
-          </div>
-          {!currentPlan && (
-            <button
-              className="subscribe-btn"
-              style={{ marginTop: 12 }}
-              onClick={() => setPlansOpen(true)}
             >
-              Suscribirse
-            </button>
+              Cambiar foto
+            </div>
           )}
-          <button
-            className="subscribe-btn"
-            style={{ marginTop: 12 }}
-            onClick={() => navigate("/home")}
-          >
-            Regresar
-          </button>
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={handlePhotoChange}
+          />
         </div>
-        {/* Modal debe ir aquí, fuera del contenedor absoluto */}
-        <PlansModal
-          open={plansOpen}
-          onClose={() => setPlansOpen(false)}
-          wide={showingCheckoutForm}
+        <div
+          style={{
+            marginTop: 18,
+            fontWeight: 700,
+            fontSize: 22,
+            color: "#fff",
+            textAlign: "center",
+            width: "100%",
+            wordBreak: "break-word",
+          }}
         >
-          <Elements stripe={stripePromise}>
-            <SubscriptionSection onShowCheckoutForm={setShowingCheckoutForm} />
-          </Elements>
-        </PlansModal>
-        {/* Resto del contenido centrado */}
+          {profileName}
+        </div>
+        <button
+          className="subscribe-btn"
+          style={{ marginTop: 12 }}
+          onClick={() => setPlansOpen(true)}
+        >
+          Suscribirse
+        </button>
+        <button
+          className="subscribe-btn"
+          style={{ marginTop: 12 }}
+          onClick={() => navigate("/home")}
+        >
+          Regresar
+        </button>
       </div>
-    </>
+      <PlansModal open={plansOpen} onClose={() => setPlansOpen(false)}>
+        <Elements stripe={stripePromise}>
+          <SubscriptionSection onShowCheckoutForm={setShowingCheckoutForm} />
+        </Elements>
+      </PlansModal>
+    </div>
   );
 };
 
