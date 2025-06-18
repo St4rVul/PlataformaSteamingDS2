@@ -31,7 +31,6 @@ Una plataforma de streaming moderna construida con React.js, TypeScript, NestJS 
 - AWS SDK
 - Stripe API
 - Firebase Admin SDK
-- Express
 
 ## 📦 Instalación
 
