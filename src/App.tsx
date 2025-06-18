@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProfileSelection from "./components/ProfileSelection";
+import Upload from "./components/upload";
 import Home from "./components/Home";
 import StripeCheckout from "./components/StripeCheckout";
 import Account from "./pages/Account";
@@ -39,8 +40,6 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profiles" element={<ProfileSelection />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/reproductor" element={<Reproductor />} />
         <Route
           path="/home"
           element={
@@ -50,8 +49,9 @@ const App: React.FC = () => {
             </>
           }
         />
+        <Route path="/reproductor" element={<Reproductor />} />
         <Route path="/account" element={<Account />} />
-
+        <Route path="/upload" element={<Upload />} />
         <Route
           path="/admin"
           element={

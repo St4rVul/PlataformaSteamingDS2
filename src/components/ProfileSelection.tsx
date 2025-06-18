@@ -6,7 +6,7 @@ import "./ProfileSelection.css";
 const ProfileSelection: React.FC = () => {
   const navigate = useNavigate();
   const profiles = [
-    { id: 1, name: "Marquez", avatar: "/images/profile1.png" },
+    { id: 1, name: "Marqueza", avatar: "/images/profile1.png" },
     { id: 2, name: "Cossio", avatar: "/images/profile2.png" },
     { id: 3, name: "Rueda", avatar: "/images/profile3.png" },
   ];
