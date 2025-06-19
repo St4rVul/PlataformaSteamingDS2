@@ -1,23 +1,43 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PlansModal from "../components/PlansModal";
 import SubscriptionSection from "../components/SubscriptionSection";
 import { useNavigate } from "react-router-dom";
 
-const defaultProfilePhoto = "/images/profile2.png";
 const stripePromise = loadStripe(
   "pk_test_51RRdh2IMveI3OI3GeLoNiOFiOwIZ99lvnEakENl189C9xOsfhDzKN7NPuYTyhrrJfOE4aLWr7iRruxp7eQkHgF7c00au1rPL8x"
 );
 
+const profiles = [
+  { id: 1, name: "Marquez", avatar: "/images/profile1.png" },
+  { id: 2, name: "Cossio", avatar: "/images/profile2.png" },
+  { id: 3, name: "Rueda", avatar: "/images/profile3.png" },
+];
+
 const Account: React.FC = () => {
   const [showPlans, setShowPlans] = useState(false);
-  const [profilePhoto, setProfilePhoto] = useState(defaultProfilePhoto);
+  const [profileName, setProfileName] = useState("Usuario");
+  const [profilePhoto, setProfilePhoto] = useState("/images/profile2.png");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [hover, setHover] = useState(false);
   const [plansOpen, setPlansOpen] = useState(false);
   const [showingCheckoutForm, setShowingCheckoutForm] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const selectedProfileId = localStorage.getItem("selectedProfile");
+    if (selectedProfileId) {
+      const profile = profiles.find(
+        (p) => p.id === Number(selectedProfileId)
+      );
+      if (profile) {
+        setProfileName(profile.name);
+        setProfilePhoto(profile.avatar);
+      }
+    }
+  }, []);
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -29,9 +49,8 @@ const Account: React.FC = () => {
     }
   };
 
-  const profileName = "Emilson"; // Cambia por el nombre real del perfil
   const currentPlan = null; // O el nombre del plan actual, por ejemplo: "Estándar"
-  const navigate = useNavigate();
+
   return (
     <>
       <div
